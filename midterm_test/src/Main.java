@@ -1,8 +1,7 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        //청주대에서 내가 불편한 것들.....
 
 
     static class restaurant {
@@ -21,10 +20,23 @@ public class Main {
                 case 2 -> "혼잡";
                 default -> "정보 없음";
             };
+        }
+    }
+
+    static ArrayList<restaurant> restaurants = new ArrayList<>();
+    static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        restaurants.add(new restaurant("아르떼 카페"));
+        restaurants.add(new restaurant("학생회관 식당"));
+        restaurants.add(new restaurant("비즈니스대 식당"));
+        restaurants.add(new restaurant("켐토 카페"));
+
+        while (true) {
+            System.out.println("흠...");
 
 
         }
-    }
 
 
 
