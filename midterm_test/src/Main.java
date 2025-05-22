@@ -33,7 +33,14 @@ public class Main {
         restaurants.add(new restaurant("켐토 카페"));
 
         while (true) {
-            System.out.println("흠...");
+            System.out.println("\n--- 청주대 캠퍼스 식당 혼잡도 시스템---");
+            System.out.println("1. 혼잡도 조회");
+            System.out.println("2. 혼잡도 등록");
+            System.out.println("3. 종료");
+            System.out.println("메뉴 선택");
+
+            int choice = scanner.nextInt();
+
 
 
         }
