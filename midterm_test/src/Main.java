@@ -10,11 +10,11 @@ public class Main {
 
         restaurant(String name) {
             this.name = name;
-            this.crowdLevel = 0;
+            this.people = 0;
         }
 
         String getCrowdLevelText() {
-            return switch (crowdLevel) {
+            return switch (people) {
                 case 0 -> "여유";
                 case 1 -> "보통";
                 case 2 -> "혼잡";
@@ -40,6 +40,16 @@ public class Main {
             System.out.println("메뉴 선택");
 
             int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1: -> showCrowdStatus();
+                case 2: -> registerCrowdStatus();
+                case 3: {
+                    System.out.println("프로그램을 종료합니다.");
+                    return;
+                }
+                default -> System.out.println("잘못된 입력입니다.");
+            }
 
 
 
