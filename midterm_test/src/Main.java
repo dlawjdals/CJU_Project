@@ -50,15 +50,20 @@ public class Main {
                 }
                 default -> System.out.println("잘못된 입력입니다.");
             }
-
-
-
         }
+    }
 
+    static void showCrowdStatus() {
+        System.out.println("\n[현재 식당 혼잡도]");
+        for (int i = 0; i < restaurants.size(); i++) {
+            restaurant dp = restaurants.get(i);
+            System.out.println("%d. %s - %s\n", i + 1, dp.name, dp.getCrowdLevelText());
+        }
+    }
 
-
-
-
-
+    static void registerCrowdStatus() {
+        showCrowdStatus();
+        System.out.println("혼잡도를 등록할 식당 번호 선택 > ");
+        int choice = scanner.nextInt() - 1;
     }
 }
