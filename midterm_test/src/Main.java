@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -44,7 +45,7 @@ public class Main {
             switch (choice) {
                 case 1: -> showCrowdStatus();
                 case 2: -> registerCrowdStatus();
-                case 3: {
+                case 3: -> {
                     System.out.println("프로그램을 종료합니다.");
                     return;
                 }
@@ -65,5 +66,25 @@ public class Main {
         showCrowdStatus();
         System.out.println("혼잡도를 등록할 식당 번호 선택 > ");
         int choice = scanner.nextInt() - 1;
+
+        if (choice < 0 || choice >= restaurants.size()) {
+            System.out.println("잘못된 번호입니다.");
+            return;
+        }
+
+        System.out.println("혼잡도 입력 (0: 여유, 1: 보통, 2: 혼잡)");
+        int level = scanner.nextInt();
+
+        if (level < 0 || level > 2) {
+            System.out.println("잘못된 혼잡도입니다.");
+            return;
+
+        }
+
+        restaurants.get(choice).people += level;
+        System.out.println("혼잡도 등록이 완료되었습니다!");
     }
+
+
+
 }
