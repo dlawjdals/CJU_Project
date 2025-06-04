@@ -7,20 +7,22 @@ public class Main {
 
     static class restaurant {
         String name;
+        int max_people;
         int people;
 
         restaurant(String name) {
             this.name = name;
             this.people = 0;
+            this.max_people = 0;
         }
 
         String getCrowdLevelText() {
-            return switch (people) {
-                case 0 -> "여유";
-                case 1 -> "보통";
-                case 2 -> "혼잡";
-                default -> "정보 없음";
-            };
+            double usage = (double) people / max_people;
+
+            if (usage < 0.3) return "여유";
+            else if (usage >= 0.5 && usage < 0.7) return "약간 혼잡";
+            else if (usage >= 0.7 && max_people < people) return "매우 혼잡";
+            else return "매우 혼잡 / 대기 인원: " + (max_people - people) + "명";
         }
     }
 
