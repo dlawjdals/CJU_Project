@@ -1,4 +1,4 @@
-import java.sql.SQLOutput;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -43,9 +43,9 @@ public class Main {
             int choice = scanner.nextInt();
 
             switch (choice) {
-                case 1: -> showCrowdStatus();
-                case 2: -> registerCrowdStatus();
-                case 3: -> {
+                case 1 -> showCrowdStatus();
+                case 2 -> registerCrowdStatus();
+                case 3 -> {
                     System.out.println("프로그램을 종료합니다.");
                     return;
                 }
@@ -58,7 +58,7 @@ public class Main {
         System.out.println("\n[현재 식당 혼잡도]");
         for (int i = 0; i < restaurants.size(); i++) {
             restaurant dp = restaurants.get(i);
-            System.out.println("%d. %s - %s\n", i + 1, dp.name, dp.getCrowdLevelText());
+            System.out.printf("%d. %s - %s\n", i + 1, dp.name, dp.getCrowdLevelText());
         }
     }
 
