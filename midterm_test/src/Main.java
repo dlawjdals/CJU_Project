@@ -12,8 +12,8 @@ public class Main {
 
         restaurant(String name) {
             this.name = name;
-            this.people = 0;
-            this.max_people = 0;
+            this.people = people;
+            this.max_people = max_people;
         }
 
         String getCrowdLevelText() {
@@ -24,7 +24,12 @@ public class Main {
             else if (usage >= 0.7 && max_people < people) return "매우 혼잡";
             else return "매우 혼잡 / 대기 인원: " + (max_people - people) + "명";
         }
+        void printStatus() {
+            System.out.printf("%s (%d/%d): %s\n", name,people, max_people, getCrowdLevelText() );
+        }
     }
+
+
 
     static ArrayList<restaurant> restaurants = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
