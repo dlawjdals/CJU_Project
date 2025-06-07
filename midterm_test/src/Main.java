@@ -10,10 +10,13 @@ public class Main {
         int max_people;
         int people;
 
-        restaurant(String name) {
+        restaurant(String name, int max_people, int people) {
             this.name = name;
             this.people = people;
             this.max_people = max_people;
+        }
+
+        public restaurant(String name) {
         }
 
         String getCrowdLevelText() {
@@ -28,6 +31,8 @@ public class Main {
             System.out.printf("%s (%d/%d): %s\n", name,people, max_people, getCrowdLevelText() );
         }
     }
+
+
 
 
 
