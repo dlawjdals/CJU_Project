@@ -2,39 +2,39 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+class restaurant {
+    String name;
+    int max_people;
+    int people;
+
+    restaurant(String name, int people, int max_people) {
+        this.name = name;
+        this.people = people;
+        this.max_people = max_people;
+    }
+
+    public restaurant(String name) {
+    }
+
+    String getCrowdLevelText() {
+        double usage = (double) people / max_people;
+
+        if (usage < 0.3) return "여유";
+        else if (usage >= 0.5 && usage < 0.7) return "약간 혼잡";
+        else if (usage >= 0.7 && max_people < people) return "매우 혼잡";
+        else return "매우 혼잡 / 대기 인원: " + (max_people - people) + "명";
+    }
+    void printStatus() {
+        System.out.printf("%s (%d/%d): %s\n", name,people, max_people, getCrowdLevelText() );
+    }
+
 public class Main {
 
 
-    static class restaurant {
-        String name;
-        int max_people;
-        int people;
 
-        restaurant(String name, int max_people, int people) {
-            this.name = name;
-            this.people = people;
-            this.max_people = max_people;
-        }
 
-        public restaurant(String name) {
-        }
 
-        String getCrowdLevelText() {
-            double usage = (double) people / max_people;
-
-            if (usage < 0.3) return "여유";
-            else if (usage >= 0.5 && usage < 0.7) return "약간 혼잡";
-            else if (usage >= 0.7 && max_people < people) return "매우 혼잡";
-            else return "매우 혼잡 / 대기 인원: " + (max_people - people) + "명";
-        }
-        void printStatus() {
-            System.out.printf("%s (%d/%d): %s\n", name,people, max_people, getCrowdLevelText() );
-        }
     }
-
-
-
-
 
     static ArrayList<restaurant> restaurants = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
