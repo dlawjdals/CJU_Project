@@ -7,7 +7,7 @@ class restaurant {
     int max_people;
     int people;
 
-    restaurant(String name, int people, int max_people) {
+    restaurant(String name, int max_people, int people) {
         this.name = name;
         this.max_people = max_people;
         this.people = people;
@@ -48,18 +48,19 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        restaurants.add(new restaurant("아르떼 카페", 30, 5));
-        restaurants.add(new restaurant("켐토 카페"));
-        restaurants.add(new restaurant("중앙도서관 카페"));
-        restaurants.add(new restaurant("학생회관 식당"));
-        restaurants.add(new restaurant("비즈니스대 식당"));
-        restaurants.add(new restaurant("짬봉의 맛"));
+        restaurants.add(new restaurant("아르떼 카페", 10, 13));
+        restaurants.add(new restaurant("켐토 카페", 15, 5));
+        restaurants.add(new restaurant("중앙도서관 카페", 20, 21));
+        restaurants.add(new restaurant("학생회관 식당", 70, 38));
+        restaurants.add(new restaurant("비즈니스대 식당", 50, 49));
+        restaurants.add(new restaurant("짬봉의 맛", 30, 5));
 
         while (true) {
             System.out.println("\n--- 청주대 캠퍼스 식당 혼잡도 시스템---");
             System.out.println("1. 혼잡도 조회");
-            System.out.println("2. 혼잡도 등록");
-            System.out.println("3. 종료");
+            System.out.println("2. 인원 수 수동 등록");
+            System.out.println("3. 시간 경과 시뮬레이션");
+            System.out.println("4. 종료");
             System.out.println("메뉴 선택");
 
             int choice = scanner.nextInt();
@@ -67,7 +68,8 @@ public class Main {
             switch (choice) {
                 case 1 -> showCrowdStatus();
                 case 2 -> registerCrowdStatus();
-                case 3 -> {
+                case 3 -> simulateFuture();
+                case 4 -> {
                     System.out.println("프로그램을 종료합니다.");
                     return;
                 }
@@ -105,6 +107,12 @@ public class Main {
 
         restaurants.get(choice).people += level;
         System.out.println("혼잡도 등록이 완료되었습니다!");
+
+        static void simulateFuture() {
+            System.out.println("\n 40분 후 혼잡도 업데이트 중...");
+
+
+        }
     }
 
 
