@@ -9,41 +9,51 @@ class restaurant {
 
     restaurant(String name, int people, int max_people) {
         this.name = name;
-        this.people = people;
         this.max_people = max_people;
+        this.people = people;
     }
 
     public restaurant(String name) {
     }
 
     String getCrowdLevelText() {
-        double usage = (double) people / max_people;
-
-        if (usage < 0.3) return "여유";
-        else if (usage >= 0.5 && usage < 0.7) return "약간 혼잡";
-        else if (usage >= 0.7 && max_people < people) return "매우 혼잡";
-        else return "매우 혼잡 / 대기 인원: " + (max_people - people) + "명";
+        double ratio = (double) people / max_people;
+        if (people > max_people) {
+            int waiting = people - max_people;
+            return "매우 혼잡 / 대기 인원: " + waiting + "명";
+        } else if (ratio >= 0.7) {
+            return "매우 혼잡";
+        } else if (ratio >= 0.5) {
+            return "약간 혼잡";
+        } else {
+            return "여유";
+        }
     }
+
     void printStatus() {
-        System.out.printf("%s (%d/%d): %s\n", name,people, max_people, getCrowdLevelText() );
+        System.out.printf("%s (%d/%d): %s\n", name, people, max_people, getCrowdLevelText());
     }
 
+    void updatePeople(int newPeople) {
+        this.people += newPeople;
+    }
+
+    void addPeople(int amount) {
+        this.people += amount;
+    }
+}
 public class Main {
-
-
-
-
-
-    }
 
     static ArrayList<restaurant> restaurants = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        restaurants.add(new restaurant("아르떼 카페"));
+        restaurants.add(new restaurant("아르떼 카페", 30, 5));
+        restaurants.add(new restaurant("켐토 카페"));
+        restaurants.add(new restaurant("중앙도서관 카페"));
         restaurants.add(new restaurant("학생회관 식당"));
         restaurants.add(new restaurant("비즈니스대 식당"));
-        restaurants.add(new restaurant("켐토 카페"));
+        restaurants.add(new restaurant("짬봉의 맛"));
 
         while (true) {
             System.out.println("\n--- 청주대 캠퍼스 식당 혼잡도 시스템---");
