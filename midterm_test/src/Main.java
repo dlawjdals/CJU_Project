@@ -80,9 +80,8 @@ public class Main {
 
     static void showCrowdStatus() {
         System.out.println("\n[현재 식당 혼잡도]");
-        for (int i = 0; i < restaurants.size(); i++) {
-            restaurant dp = restaurants.get(i);
-            System.out.printf("%d. %s - %s\n", i + 1, dp.name, dp.getCrowdLevelText());
+        for (restaurant p : restaurants) {
+            p.printStatus();
         }
     }
 
@@ -105,12 +104,20 @@ public class Main {
 
         }
 
-        restaurants.get(choice).people += level;
+        restaurants.get(level).addPeople(level);
         System.out.println("혼잡도 등록이 완료되었습니다!");
 
         static void simulateFuture() {
             System.out.println("\n 40분 후 혼잡도 업데이트 중...");
 
+            restaurants.get(0).updatePeople(1);
+            restaurants.get(1).updatePeople(14);
+            restaurants.get(2).updatePeople(10);
+            restaurants.get(3).updatePeople(15);
+            restaurants.get(4).updatePeople(10);
+            restaurants.get(5).updatePeople(75);
+
+            showCrowdStatus();
 
         }
     }
