@@ -107,23 +107,25 @@ public class Main {
     }
 
     static void simulateFuture() {
-        showCrowdStatus();
-        System.out.println("\n 40분 후 혼잡도 업데이트 중...");
+        System.out.println("\n[현재 혼잡도 - 업데이트 전]");
+        for (restaurant r : restaurants) {
+            r.printStatus();
+        }
 
-        restaurants.get(0).updatePeople(1);
-        restaurants.get(1).updatePeople(14);
-        restaurants.get(2).updatePeople(10);
-        restaurants.get(3).updatePeople(15);
-        restaurants.get(4).updatePeople(10);
-        restaurants.get(5).updatePeople(75);
+        System.out.println("\n[혼잡도 업데이트 중... 40분 경과]\n");
 
-        showCrowdStatus();
+        // 인원 업데이트
+        restaurants.get(0).updatePeople(1);   // 아르떼 카페
+        restaurants.get(1).updatePeople(14);  // 켐토 카페
+        restaurants.get(2).updatePeople(10);  // 중앙도서관 카페
+        restaurants.get(3).updatePeople(15);  // 학생회관 식당
+        restaurants.get(4).updatePeople(10);  // 비즈니스대 식당
+        restaurants.get(5).updatePeople(75);  // 짬뽕의 맛
 
+        System.out.println("[업데이트 후 혼잡도]");
+        for (restaurant r : restaurants) {
+            r.printStatus();
+        }
     }
-
-
-
-
-
 
 }
